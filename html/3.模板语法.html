@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>#文本</h1>
+<div id="example1">
+    <span v-once>{{ msg }}</span>
+    <br>
+    <span >{{ msg }}</span>
+    <br>
+    <input type="text" v-model="msg">
+</div>
+<hr>
+<h1>#纯HTML</h1>
+<div id="example2">
+    <div v-html="dom"></div>
+    <div>{{ dom }}</div>
+    {{ dom }}
+</div>
+<hr>
+<h1>#属性</h1>
+<div id="exa3" >
+    <p v-bind:style="style1">i am a paragraph</p>
+    <p :style="style1">i am a paragraph</p>
+</div>
+<hr>
+<h1>#缩写</h1>
+<div id="exa4" >
+    <p v-on:click="doit">click me</p>
+    <p @click="doit">click me</p>
+</div>
+
+
+
+
+<script src='../js/vue.js'></script>
+<script>
+    var vm1 = new Vue({
+        el: '#example1',
+        data: {
+            msg: 'hello world'
+        }
+    });
+    var vm2 = new Vue({
+        el: '#example2',
+        data: {
+            dom: '<ul><li>item1</li><li>item2</li></ul>'
+        }
+    });
+    var vm3 = new Vue({
+        el: '#exa3',
+        data: {
+            style1: 'background: pink;border:1px solid blue;padding:20px'
+        }
+    });
+    var vm4 = new Vue({
+        el: '#exa4',
+        data: {
+            info: 'i am informations'
+        },
+        methods: {
+            doit: function () {
+                console.info(this.info);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

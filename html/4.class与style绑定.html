@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="test">
+    <h1>对象语法</h1>
+
+    <p class="p1" v-bind:class="{ active: isActive, err: hasError }">
+        today is fouthday
+    </p>
+    <p v-bind:class=" obj ">tomorrow is friday</p>
+
+    <p v-bind:class=" classObj ">32321 tomorrow is friday</p>
+
+    <hr>
+    <h1>数组语法</h1>
+    <p v-bind:class="[activeClass, errorClass]">0000000000</p>
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+
+    var vm1 = new Vue({
+        el: '.test',
+        data: {
+            isActive: true,
+            hasError: true,
+            obj: {
+                active: true,
+                err: false
+            },
+            activeClass: 'active',
+            errorClass: 'text-danger'
+        },
+        computed: {
+            classObj: function () {
+                return {
+                    active: this.isActive && this.hasError,
+                    'text-danger': this.hasError && !this.obj.err ,
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
