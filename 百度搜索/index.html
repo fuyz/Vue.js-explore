@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            background: gray;
+            color: white;
+        }
+
+        .nav {
+            position: absolute;
+            top: 80px;
+            left: 18px;
+            border: 1px solid #999;
+            background: #eee;
+            border-radius: 5px;
+            padding: 6px 25px;
+        }
+    </style>
+
+</head>
+<body>
+<h2>百度搜索</h2>
+<div id="box">
+    <input type="text" v-model="search" @keyup="getData($event)" @keydown.down.prevent="getDown()"
+           @keydown.up.prevent="getUp()" @keydown.enter="goTo()">
+
+    <ol class="nav">
+        <li v-for="(item,index) in myData" :class="{active: nowIndex == index}">
+            {{ item }}
+        </li>
+    </ol>
+    <p v-show=" myData.length ==0 ">暂无数据.....</p>
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="../js/vue-resource.js"></script>
+<script>
+
+    new Vue({
+        el: '#box',
+        data: {
+            myData: [],
+            search: '',
+            nowIndex: -1
+        },
+        methods: {
+            getData: function (e) {
+                if (e.keyCode == 38 || e.keyCode == 40) {
+                    return;
+                }
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+                    params: {
+                        wd: this.search
+                    },
+                    jsonp: 'cb'
+                }).then(function (e) {
+//                    console.log(e);
+                    this.myData = JSON.parse(e.bodyText).s;
+                }, function (err) {
+                    console.log(err)
+                })
+//                this.$http({
+//                    url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+//                    data: {
+//                        wd: this.search
+//                    },
+//                    method: 'jsonp',
+//                    jsonp: 'cb'
+//                }).then(function (e) {
+////                    console.log(e);
+//                    this.myData = JSON.parse(e.bodyText).s;
+//                }, function (err) {
+//                    console.log(err)
+//                })
+            },
+            getDown: function (e) {
+                this.nowIndex++;
+                if (this.nowIndex == this.myData.length) this.nowIndex = 0;
+                this.search = this.myData[this.nowIndex];
+            },
+            getUp: function () {
+                this.nowIndex--;
+                if (this.nowIndex == -2) this.nowIndex = this.myData.length - 1;
+                this.search = this.myData[this.nowIndex];
+            },
+            goTo: function () {
+                window.open('https://www.baidu.com/s?wd=' + this.search);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

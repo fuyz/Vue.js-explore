@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div id='box'>
+	<button @click="getData()">get</button>
+	<button @click="getDataFromServer()">getDataFromServer</button>
+	<button @click="postData()">post</button>
+	<button @click="getData()">get</button>
+
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-resource.js"> </script>
+<script type="text/javascript">
+	
+
+new Vue({
+	el: '#box',
+	data: {
+
+	},
+	methods: {
+		getData: function(){
+			this.$http.get('b.json').then(function(e){
+				console.log(e.body)
+			},function(err){
+				console.log(err)
+			})
+		},
+        getDataFromServer: function(){
+            this.$http.get('server.php',{a: 12,b: 10}).then(function(e){
+                console.log(e.data)
+            },function(err){
+                console.log(err)
+            })
+        },
+        postData: function(){
+            this.$http.get('server.php',{a: 2,b: 22}).then(function(e){
+                console.log(e)
+            },function(err){
+                console.log(err)
+            })
+        },
+//		getData: function(){
+//            this.$http.get('b.json').then(function(e){
+//                console.log(e.body)
+//            },function(err){
+//                console.log(err)
+//            })
+//        }
+	}
+})
+
+</script>
+</body>
+</html>

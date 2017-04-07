@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div id='box'>
+		<!-- <input type="text" v-modael="msg" name=""> -->
+		<p >{{ a | capitalize  }}</p>
+		<p>{{ a | upper }}</p>
+		<!-- <p>{{ a | capitalize }}</p> -->
+		<p>{{ a | lower }} </p>
+
+		<p>{{ a | lower | upper }} </p>
+
+		<input type="text" v-bind:value="value | upper" >
+
+
+	</div>
+
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript">
+		
+		new Vue({
+			el: '#box',
+			data: {
+				a: 'fsDDDGEWrwerw',
+				value: 'gsgsd'
+			},
+			methods: function(){
+
+			},
+			filters: {
+				upper: function(val){
+					return	val = val.toUpperCase();
+				},
+				lower: function(val){
+					return val = val.toLowerCase()
+				}
+			}
+
+		})
+
+	</script>
+</body>
+</html>

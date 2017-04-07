@@ -20,5 +20,17 @@
 哈哈
 <div class="d1"></div>
 
+<script src="../js/jquery-3.1.0.min.js"></script>
+<script>
+
+    $.ajax({
+        url:'a.txt',
+//        dataType: 'json',
+        success: function (e) {
+            console.log(e)
+        }
+    })
+
+</script>
 </body>
 </html>

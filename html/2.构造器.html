@@ -5,24 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<div id="app">
-    {{ a }}
-</div>
+    <div id="app">
+        {{ a }}
+    </div>
 
-<div id="example">
-    {{ a }}
-    <br>
-    <input type="text" v-model="a">
-</div>
+    <div id="example">
+        {{ a }}
+        <br>
+        <input type="text" v-model="a">
+    </div>
 
-<script src="../js/vue.js"></script>
-<script>
+    <script src="../js/vue.js"></script>
+    <script>
 
-    var data = { a:1 };
-    var vm = new Vue({
-        el:'#app',
-        data: data
-    });
+        var data = { a:1 };
+        var vm = new Vue({
+            el:'#app',
+            data: data
+        });
     /*
             vm.a === data.a // -> true
         // 设置属性也会影响到原始数据
@@ -31,14 +31,14 @@
         // ... 反之亦然
             data.a = 3
             vm.a // -> 3
-    */
+            */
 
-    var data2 = { a: 1111 };
-    var vm2 = new Vue({
-        el: '#example',
-        data: data2
-    });
-    vm2.$watch('a', function (newVal, oldVal) {
+            var data2 = { a: 1111 };
+            var vm2 = new Vue({
+                el: '#example',
+                data: data2
+            });
+            vm2.$watch('a', function (newVal, oldVal) {
         // 这个回调将在 `vm.a`  改变后调用
         console.log("new:"+newVal,"\nold:"+oldVal);
     });
@@ -49,10 +49,10 @@
          vm.$watch('a', function (newVal, oldVal) {
          // 这个回调将在 `vm.a`  改变后调用
          })
-     */
+         */
 
 
-</script>
+     </script>
 
-</body>
-</html>
+ </body>
+ </html>

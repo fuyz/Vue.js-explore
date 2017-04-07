@@ -6,94 +6,95 @@
 </head>
 <body>
 
-<div id="exa">
-    <h1> template 中 v-if 条件组</h1>
-    <template v-if="ok">
-        <h3>Title</h3>
-        <p>Paragraph 1</p>
-        <p>Paragraph 2</p>
-    </template>
-    <hr>
-
-    <h1>v-else</h1>
-    <div v-if=" 0.1 > 0.5">
-        Now you see me
-    </div>
-    <div v-else>
-        Now you don't
-    </div>
-
-    <hr>
-    <h1>v-else-if</h1>
-    <div v-if="type === 'A'">
-        A
-    </div>
-    <div v-else-if="type === 'B'">
-        B
-    </div>
-    <div v-else-if="type === 'C'">
-        C
-    </div>
-    <div v-else>
-        Not A/B/C
-    </div>
-
-    <hr>
-
-    <template v-if="'loginType' === 'username'">
-        <label>Username</label>
-        <input placeholder="Enter your username">
-    </template>
-    <template v-else>
-        <label>Email</label>
-        <input placeholder="Enter your email address">
-    </template>
-
-    <hr>
-    <h1>v-show</h1>
-    <p v-show="ok">it is show</p>
-    <p v-show="!ok">it is not show</p>
-
-    <hr>
-    <hr>
-    <h1>列表渲染</h1>
-    <ul id="example-1">
-        <li v-for="item in items">
-            {{ item.message }}
-        </li>
-    </ul>
-
-    <h2>列表的模块化渲染</h2>
-    <ul>
-        <template v-for="(item, index) in items">
-            <li>{{ item.message }}，{{ index }}</li>
-            <li class="divider">li</li>
+    <div id="exa">
+        <h1> template 中 v-if 条件组</h1>
+        <template v-if="ok">
+            <h3>Title</h3>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
         </template>
-    </ul>
+        <hr>
 
-    <h2>对象逘代法</h2>
-    <ul id="repeat-object" class="demo">
-        <li v-for="value in object">
-            {{ value }}
-        </li>
-        <li v-for="(value,key, index) in object">
-            {{ index }} : {{ key }}: {{ value }}
-        </li>
-    </ul>
+        <h1>v-else</h1>
+        <div v-if=" 0.1 > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
 
-    <h2>整数一代</h2>
-    <div>
-        <span v-for="n in 10">{{ n }}</span>
+        <hr>
+        <h1>v-else-if</h1>
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <hr>
+
+        <template v-if="'loginType' === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address">
+        </template>
+
+        <hr>
+        <h1>v-show</h1>
+        <p v-show="ok">it is show</p>
+        <p v-show="!ok">it is not show</p>
+        <button @click="toggle()">toggle</button>
+
+        <hr>
+        <hr>
+        <h1>列表渲染</h1>
+        <ul id="example-1">
+            <li v-for="item in items">
+                {{ item.message }}
+            </li>
+        </ul>
+
+        <h2>列表的模块化渲染</h2>
+        <ul>
+            <template v-for="(item, index) in items">
+                <li>{{ item.message }}，{{ index }}</li>
+                <li class="divider">li</li>
+            </template>
+        </ul>
+
+        <h2>对象逘代法</h2>
+        <ul id="repeat-object" class="demo">
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+            <li v-for="(value,key, index) in object">
+                {{ index }} : {{ key }}: {{ value }}
+            </li>
+        </ul>
+
+        <h2>整数一代</h2>
+        <div>
+            <span v-for="n in 10">{{ n }}</span>
+        </div>
+
+        <br><br><br>
     </div>
 
-    <br><br><br>
-</div>
-
-<div id="todo-list-example">
-    <input v-model="newTodoText" v-on:keyup.enter="addNewTodo"
-           placeholder="Add a todo">
-    <ul>
-        <li is="todo-item" v-for="(todo, index) in todos"
+    <div id="todo-list-example">
+        <input v-model="newTodoText" v-on:keyup.enter="addNewTodo"
+        placeholder="Add a todo">
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos"
             v-bind:title="todo" v-on:remove="todos.splice(index, 1)">
 
         </li>
@@ -110,31 +111,36 @@
             ok: true,
             type: 'Ab',
             items: [
-                {message: 'Foo'},
-                {message: 'Bar'}
+            {message: 'Foo'},
+            {message: 'Bar'}
             ],
             object: {
                 FirstName: 'John',
                 LastName: 'Doe',
                 Age: 30
             }
+        },
+        methods: {
+            toggle: function () {
+                this.ok = !this.ok;
+            }
         }
     });
 
     Vue.component('todo-item', {
         template: '<li>{{ title }}\
-                      <button v-on:click="$emit(\'remove\')">X</button>\
-                    </li>',
-        props: ['title']
-    });
+        <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>',
+    props: ['title']
+});
     var vm2 = new Vue({
         el: '#todo-list-example',
         data: {
             newTodoText: '',
             todos: [
-                'Do the dishes',
-                'Take out the trash',
-                'Mow the lawn'
+            'Do the dishes',
+            'Take out the trash',
+            'Mow the lawn'
             ]
         },
         methods: {

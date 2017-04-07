@@ -50,6 +50,25 @@
     <br>
     <span>Selected: {{ selected }}</span>
 </div>
+<hr>
+<h1>绑定value</h1>
+<div id="exa7">
+    <!-- 当选中时，`picked` 为字符串 "a" -->
+    <input type="radio" v-model="picked" value="a">
+    <!-- `toggle` 为 true 或 false -->
+    <input type="checkbox" v-model="toggle">
+    <!-- 当选中时，`selected` 为字符串 "abc" -->
+    <select v-model="selected">
+        <option value="abc">ABC</option>
+    </select>
+    <br>
+    <input v-model.number="age" type="number">
+    <br>
+    <input id="trim" v-model.trim="msg">
+
+</div>
+
+
 
 <script src="../js/vue.js"></script>
 <script>
@@ -78,6 +97,17 @@
         el: '#example-6',
         data: {
             selected: []
+        }
+    });
+
+    var vm7 = new Vue({
+        el: '#exa7',
+        data: {
+            selected: [],
+            msg: '',
+            picked: '',
+            toggle: '',
+            age:''
         }
     })
 

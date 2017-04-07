@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="counter-event-example">
+    <p>{{ total }}</p>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:increment="incrementTotal"></button-counter>
+    <button-counter v-on:doubleCli="doub">rrr</button-counter>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    Vue.component('button-counter', {
+        template: '<button v-on:click="increment" v-on:dblclick="doubleCli">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+
+        methods: {
+            increment: function () {
+                this.counter += 1;
+                this.$emit('increment')
+                /*向外传播increment方法*/
+            },
+            doubleCli: function () {
+                console.log('子组件');
+                this.$emit('doubleCli')
+            }
+        }
+    });
+
+    new Vue({
+        el: '#counter-event-example',
+        data: {
+            total: 0
+        },
+        methods: {
+            incrementTotal: function () {
+                this.total += 1
+            },
+            doub: function () {
+                console.log('付组件');
+            }
+        }
+    })
+
+
+</script>
+
+</body>
+</html>

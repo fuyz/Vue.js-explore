@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="exe">
+
+    <h1>静态prop</h1>
+    <child message="hello!" my-message="world !"></child>
+
+    <hr>
+    <h1>动态prop</h1>
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-msg="parentMsg"></child>
+
+    <hr>
+    <child2 v-bind:some-number="123" some-string="1000"></child2>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    Vue.component('child', {
+        // 声明 props
+        props: ['message', 'myMessage', 'myMsg'],
+        // 就像 data 一样，prop 可以用在模板内
+        // 同样也可以在 vm 实例中像 “this.message” 这样使用
+        template: '<div><span>{{ message }}  {{ myMessage}} </span><p> {{ myMsg }}</p></div>'
+    });
+
+    Vue.component('child2', {
+        props: ['someNumber', 'someString'],
+        template: '<div>' +
+        '<p>{{ someNumber }}, {{ typeof someNumber }}</p>' +
+        '<p>{{someString}},{{ typeof someString }}</p>  ' +
+        '<button v-on:click="doFn">打印</button>' +
+        '</div>',
+        data: function () {
+            return {
+                a1: this.someString
+            }
+        },
+        methods: {
+            doFn: function () {
+                console.log(this.a1+ ',' + this.someNumber);
+//                this.a1 = this.a1 + '哈哈哈';
+                this.someNumber += 1000;/*警告  子组件中的修改会影响父元素的内容*/
+                console.log(this.a1 + ',' + this.someNumber);
+            }
+        }
+
+    });
+
+    new Vue({
+        el: '#exe',
+        data: {
+            parentMsg: ''
+        }
+    })
+
+
+</script>
+
+</body>
+</html>
