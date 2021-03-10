@@ -1,4 +1,5 @@
-# Vue.js-code 简介：
+# Vue.js-explore  
+# vue探索简介：
 
 ## 1、vue练习
 vue中文文档：https://cn.vuejs.org/v2/guide/
