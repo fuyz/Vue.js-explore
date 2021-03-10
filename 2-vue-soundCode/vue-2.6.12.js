@@ -65,6 +65,7 @@
     /**
      * Strict object type check. Only returns true
      * for plain JavaScript objects.
+     * 严格对象类型检查。只有普通JavaScript对象返回true
      */
     function isPlainObject (obj) {
       return _toString.call(obj) === '[object Object]'
@@ -710,8 +711,8 @@
     var uid = 0;
   
     /**
-     * A dep is an observable that can have multiple
-     * directives subscribing to it.
+     * A dep is an observable that can have multiple directives subscribing to it.
+     * 一个dep是一个可观察的对象，可以有多个指令来订阅它
      */
     var Dep = function Dep () {
       this.id = uid++;
@@ -734,7 +735,7 @@
   
     Dep.prototype.notify = function notify () {
       // stabilize the subscriber list first
-      var subs = this.subs.slice();
+      var subs = this.subs.slice(); //复制一份相同但是不关联的数组
       if (!config.async) {
         // subs aren't sorted in scheduler if not running async
         // we need to sort them now to make sure they fire in correct
@@ -742,7 +743,7 @@
         subs.sort(function (a, b) { return a.id - b.id; });
       }
       for (var i = 0, l = subs.length; i < l; i++) {
-        subs[i].update();
+        subs[i].update(); //更新数据
       }
     };
   
@@ -892,7 +893,7 @@
             inserted = args.slice(2);
             break
         }
-        if (inserted) { ob.observeArray(inserted); }
+        if (inserted) { ob.observeArray(inserted); } // 操作成响应式数组数据
         // notify change
         ob.dep.notify();
         return result
@@ -949,7 +950,7 @@
     };
   
     /**
-     * Observe a list of Array items.
+     * Observe a list of Array items.  //观察数组的列表项。
      */
     Observer.prototype.observeArray = function observeArray (items) {
       for (var i = 0, l = items.length; i < l; i++) {
@@ -985,7 +986,12 @@
      * Attempt to create an observer instance for a value,
      * returns the new observer if successfully observed,
      * or the existing observer if the value already has one.
-     */
+     */    
+    /* 
+      观察者：
+      Observer类负责将复杂类型的变量转化成响应式数据，转化为响应式数据的变量都会带有 '__ob__'  属性，
+      所以 '__ob__' 属性可以作为判断响应式数据的标识。 
+    */
     function observe (value, asRootData) {
       if (!isObject(value) || value instanceof VNode) {
         return
