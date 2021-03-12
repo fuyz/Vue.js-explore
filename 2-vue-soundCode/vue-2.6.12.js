@@ -857,7 +857,7 @@
      * not type checking this file because flow doesn't play well with
      * dynamically accessing methods on Array prototype
      */
-  
+    // 重写Array原生方法
     var arrayProto = Array.prototype;
     var arrayMethods = Object.create(arrayProto);
   
