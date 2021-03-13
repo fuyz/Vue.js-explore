@@ -1,3 +1,7 @@
+let a: string = 'aaa'
+let a2: number = 2
+let arr: number[] = [1,2,3]
+let arr2: string[] = ['1', 'f']
 
 // 拷贝数组的原型到原型链上
 const arrayProto = Array.prototype

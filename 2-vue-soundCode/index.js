@@ -1,3 +1,6 @@
+var a = 'aaa';
+var arr = [1, 2, 3];
+var arr2 = ['1', 'f'];
 // 拷贝数组的原型到原型链上
 var arrayProto = Array.prototype;
 var arrayMethods = Object.create(arrayProto);

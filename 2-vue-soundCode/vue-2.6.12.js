@@ -4421,6 +4421,7 @@
      * A watcher parses an expression, collects dependencies,
      * and fires callback when the expression value changes.
      * This is used for both the $watch() api and directives.
+     * 观察者解析表达式，收集依赖项，并在表达式值更改时触发回调。 *这用于$ watch（）api和指令。
      */
     var Watcher = function Watcher (
       vm,
