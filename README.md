@@ -25,5 +25,5 @@ typescript教程：https://www.runoob.com/typescript/ts-install.html
 ### web worker： 
 Worker 接口是 Web Workers API 的一部分，指的是一种可由脚本创建的后台任务，任务执行中可以向其创建者收发信息。要创建一个 Worker ，只须调用 Worker(URL) 构造函数，
 函数参数 `URL` 为指定的脚本。
-
+##### Web_Workers_API： https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API
 参考文献：https://developer.mozilla.org/zh-CN/docs/Web/API/Worker
