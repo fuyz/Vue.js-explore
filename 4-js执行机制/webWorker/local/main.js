@@ -5,15 +5,15 @@ const result = document.querySelector('.result');
 
 if (window.Worker) {
     const myWorker = new Worker("./worker.js");
-
+    // myWorker.postMessage([8, 6])
     first.onchange = function () {
         myWorker.postMessage([first.value, second.value]);
-        console.log('Message posted to worker');
+        console.log('first Message posted to worker');
     }
 
     second.onchange = function () {
         myWorker.postMessage([first.value, second.value]);
-        console.log('Message posted to worker');
+        console.log(' second Message posted to worker');
     }
 
     myWorker.onmessage = function (e) {
