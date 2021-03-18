@@ -27,3 +27,6 @@ Worker 接口是 Web Workers API 的一部分，指的是一种可由脚本创�
 函数参数 `URL` 为指定的脚本。
 ##### Web_Workers_API： https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API
 参考文献：https://developer.mozilla.org/zh-CN/docs/Web/API/Worker
+
+## 5、typescript
+参考文献：https://www.tslang.cn/docs/home.html
