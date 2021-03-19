@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button id="a1">防抖</button>
+    <button id="a2">一次</button>
+    <button id="a3">节流</button>
+    <!-- <button>防抖</button> -->
+    <script>
+      window.onload = () => {
+        let rebounce = (fn, delay) => {
+            let set = null
+            return function() {
+                clearTimeout(set)
+                set = setTimeout(() => {
+                    fn.call(this, arguments)
+                }, delay)
+            }            
+        }
+
+        let once = (fn, delay = 0) => {
+            let enable = true
+            return () => {
+                if(!enable)return
+                enable = false
+                fn()
+            }            
+        }
+
+        let throttle = (fn, delay) => {
+            let enable = true
+            return function() {
+                if(!enable)return
+                enable = false
+                setTimeout(() => {
+                    fn.call(this, arguments)
+                    enable = true
+                }, delay)
+            }            
+        }
+
+        document.getElementById('a1').onclick = rebounce(() => {
+            console.log(1)
+        }, 1000)
+        document.getElementById('a2').onclick = once(() => {
+            console.log(2)
+        }, 1000)
+        document.getElementById('a3').onclick = throttle(() => {
+            console.log(3)
+        }, 1000)
+      }
+    </script>
+    
+</body>
+</html>
