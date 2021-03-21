@@ -21,7 +21,8 @@ typescript教程：https://www.runoob.com/typescript/ts-install.html
 ## 4、js执行机制
 ### 宏任务和微任务
 参考文章：https://blog.csdn.net/github_37360787/article/details/86610431
-![Uploading image.png…]()
+![image](https://user-images.githubusercontent.com/21302802/111892739-0402e680-8a39-11eb-8b98-9c3852ea5627.png)
+
 ![image](https://user-images.githubusercontent.com/21302802/111892710-d0c05780-8a38-11eb-8e1e-5f5b7f722875.png)
 
 
