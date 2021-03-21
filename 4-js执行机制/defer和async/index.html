@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="../assets/logo.png" alt="123" title="456">
+</body>
+<script async src="./async.js"></script>
+
+<script defer src="./defer2.js"></script>
+
+<script defer src="./defer.js"></script>
+<script>
+    console.log('start...')
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOMContentLoaded')
+    })
+    console.log('end...')
+</script>
+
+</html>

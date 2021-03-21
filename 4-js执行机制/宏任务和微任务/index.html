@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <img src="../assets/logo.png" alt="">
-    <script>
-
-        console.log('start...')
-        let a = 1
-        new Promise((resolve) => {
-            console.log('enter promise')
-            while(a<1000000000){
-                a++
-            }
-            resolve()
-        }).then(res => {
-            console.log('promise success')
-        })
-        
-
-        console.log('end...')
-
-    </script>
+    <img src="../assets/logo.png" alt="123" title="456">
 </body>
+
+<script>
+    console.log('start...')
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOMContentLoaded')
+    })
+    setTimeout(() => {
+        for (let i = 0; i < 1000; i++) {
+            console.log('settimeout looping')
+        }
+        console.log('setTimeout: loop finished')
+    })
+
+    for (let i = 0; i < 1000; i++) {
+        console.log('主线程 looping')
+    }
+    new Promise((resolve) => {
+        console.log('enter promise')
+        let a = 1
+        while (a < 1000) {
+            a++
+            console.log('Promise looping')
+        }
+        console.log('Promise: loop finished')
+        resolve()
+    }).then(res => {
+        let a = 1
+        while (a < 1000) {
+            a++
+            console.log('Promise succeed looping')
+        }
+        console.log('promise success')
+    })
+    console.log('end...')
+</script>
+
 </html>
