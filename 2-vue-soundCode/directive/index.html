@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue-2.6.12.js"></script>
+    <style>
+        .nav {
+            background-color: antiquewhite;
+            width: 100%;
+            height: 50px;
+        }
+        .success{
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        // 全局自定义指令
+        Vue.directive('color', {
+            bind: function (el, bind, vnode) {
+                el.className += ` ${bind.value}`
+            }
+        })
+        let ComponentA = Vue.extend({
+            template: `<div><h4>{{a}}</h4><input v-model="a" v-focus /> <nav class="nav" v-fixed="style" v-color="'success'">我是一个导航</nav></div>`,
+            //局部自定义指令
+            directives: {
+                focus: {
+                    // 被绑定元素插入父节点时调用 
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                },
+                fixed: {
+                    bind: function (el, bind, vnode) {
+                        console.warn([el, bind, vnode])
+                        el.style.position = 'fixed'
+                        el.style.top = bind.value.top + 'px'
+                        el.style.left = bind.value.left + 'px'
+                    }
+                },
+            },
+            data: function () {
+                return {
+                    a: 1,
+                    num: 30,
+                    style: { left: 100, top: 300 }
+                }
+            }
+        })
+        new ComponentA().$mount('#app')
+    </script>
+</body>
+
+</html>
