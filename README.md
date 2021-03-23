@@ -22,6 +22,9 @@ demo: https://github.com/fuyz/Vue.js-explore/tree/master/2-vue-soundCode/directi
 
 官网文档： https://cn.vuejs.org/v2/guide/custom-directive.html
 
+### a、定义过滤器
+官网文档：https://cn.vuejs.org/v2/guide/filters.html
+
 ## 4、js执行机制
 
 ### 宏任务和微任务
