@@ -52,7 +52,11 @@ Worker 接口是 Web Workers API 的一部分，指的是一种可由脚本创�
 
 ## 6、defer、async异步加载延迟脚本
 
+https://github.com/fuyz/Vue.js-explore/tree/master/6-defer_async
+
 ## 7、js链式操作
+
+https://github.com/fuyz/Vue.js-explore/tree/master/7-js%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C
 
 ## 8、浏览器缓存机制
 
