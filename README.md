@@ -10,13 +10,19 @@ vue中文文档：https://cn.vuejs.org/v2/guide/
 
 Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/
 
-### 相关参考文献：
+#### 相关参考文献：
 
 Object.defineProperty：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 
 相关博客：https://blog.csdn.net/github_37360787/article/details/114362025
 
 typescript教程：https://www.runoob.com/typescript/ts-install.html
+
+#### 自定义指令
+
+demo: https://github.com/fuyz/Vue.js-explore/tree/master/2-vue-soundCode/directive
+
+官网文档： https://cn.vuejs.org/v2/guide/custom-directive.html
 
 ## 4、js执行机制
 
