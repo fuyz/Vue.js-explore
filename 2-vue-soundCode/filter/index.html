@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue-2.6.12.js"></script>
+    <style>
+        .nav {
+            background-color: antiquewhite;
+            width: 100%;
+            height: 50px;
+        }
+
+        .success {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        // 全局定义过滤器
+        Vue.filter('capitalize', function (val) {
+            if (!val) return
+            return val.charAt(0).toUpperCase() + val.slice(1)
+        })
+        let ComponentA = Vue.extend({
+            template: `<div><h4>{{ str | capitalize }}</h4><p>{{name | capitalize | cover }}</p>\
+                <p>{{ name | cover }}</p><p>{{ num | parseFloat(2, 3) }}</p></div>`,
+            //局部定义过滤器
+            filters: {
+                cover: function (val) {
+                    if (!val) return ''
+                    return `【 ${val} 】`
+                },
+                parseFloat: function (val, num, num2) {
+                    // num: 2, num: 3
+                    return val.toFixed(num)
+                }
+            },
+            data: function () {
+                return {
+                    str: 'hellow',
+                    name: 'jack',
+                    num: 123.456789
+                }
+            }
+        })
+        new ComponentA().$mount('#app')
+    </script>
+</body>
+
+</html>
