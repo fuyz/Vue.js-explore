@@ -10,15 +10,18 @@ vue中文文档：https://cn.vuejs.org/v2/guide/
 
 Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/
 
-#### 相关参考文献：
+### 相关参考文献：
 
 Object.defineProperty：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 
 相关博客：https://blog.csdn.net/github_37360787/article/details/114362025
 
+### typescript
 typescript教程：https://www.runoob.com/typescript/ts-install.html
 
-#### 自定义指令
+参考文献：https://www.tslang.cn/docs/home.html
+
+### a、自定义指令
 
 demo: https://github.com/fuyz/Vue.js-explore/tree/master/2-vue-soundCode/directive
 
@@ -47,12 +50,13 @@ Worker 接口是 Web Workers API 的一部分，指的是一种可由脚本创�
 ## 5、防抖节流重绘重排(回流)
 参考文章：https://blog.csdn.net/github_37360787/article/details/115013806
 
-## 6、typescript
-参考文献：https://www.tslang.cn/docs/home.html
+## 6、defer、async异步加载延迟脚本
 
 ## 7、js链式操作
 
 ## 8、浏览器缓存机制
 
-参考文献： https://juejin.cn/post/6844903497473720333
+参考文献： a、https://juejin.cn/post/6844903497473720333
+
+b、https://segmentfault.com/a/1190000008377508?utm_source=sf-related
 
