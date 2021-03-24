@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  一个数组对象。'x' 产生一个 'on' 状态，'-'（连接符）产生一个 'off' 状态，而 '_' （下划线）表示 'on' 状态的长度。
+        // [
+        //   { on: true, length: 1 },
+        //   { on: false, length: 1 },
+        //   { on: true, length: 2 }
+        //   ...
+        // ]
+        let retArr = []
+        let str = 'x-x__'
+        str.replace(/(x_*)|(-)/g, function (match, p1, p2, idx, str) {
+            console.log([match, p1, p2, idx, str])
+            if (p1) {
+                retArr.push({
+                    on: true,
+                    length: p1.length
+                });
+            }
+            if (p2) {
+                retArr.push({
+                    on: false,
+                    length: 1
+                });
+            }
+        })
+        console.warn(retArr)
+
+        // 扩展应用
+        '1 2 3'.replace(/\d/g, function (match, i, str) {
+            console.log([match, i, str])
+        })
+        let ret = '1 2 3'.replace(/\d/g, parseInt)
+        // parseInt(1, 0)  ---1
+        // parseInt(2, 2)  ---NaN
+        // parseInt(3, 4)  ---3
+        console.log(ret)
+    </script>
+</body>
+
+</html>

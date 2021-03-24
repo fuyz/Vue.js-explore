@@ -57,7 +57,51 @@
             curFn && curFn()
         }
 
-        new LazyMan('fyz').eat('apple').sleepFirst(4).sleep(2).eat('orange')
+        // new LazyMan('fyz').eat('apple').sleepFirst(4).sleep(2).eat('orange')
+
+        class Dog {
+            constructor(name) {
+                this.name = name
+                this.stack = []
+                setTimeout(() => {
+                    this.next()
+                })
+            }
+            eat(food) {
+                let fn = () => {
+                    console.log(`I am eat ${food} !!`)
+                    this.next()
+                }
+                this.stack.push(fn)
+                return this
+            }
+            sleep(time) {
+                let fn = () => {
+                    setTimeout(() => {
+                        console.log(`after sleep ${time} s, wake up!!`)
+                        this.next()
+                    }, time * 1000)
+                }
+                this.stack.push(fn)
+                return this
+            }
+            sleepFirst(time) {
+                let fn = () => {
+                    setTimeout(() => {
+                        console.log(`after sleep ${time} s first, wake up!!`)
+                        this.next()
+                    }, time * 1000)
+                }
+                this.stack.unshift(fn)
+                return this
+            }
+            next() {
+                let fn = this.stack.shift()
+                fn && fn()
+            }
+        }
+
+        new Dog('Jack').eat('meat').sleepFirst(2).eat('water').sleep(3).eat('apple')
     </script>
 </body>
 
