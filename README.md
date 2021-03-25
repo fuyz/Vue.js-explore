@@ -56,9 +56,17 @@ https://github.com/fuyz/Vue.js-explore/tree/master/6-defer_async
 
 https://github.com/fuyz/Vue.js-explore/tree/master/7-js%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C
 
-## 8、浏览器缓存机制
+## 8、正则表达式replace
+
+参考文献： https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+
+
+
+------------------------------------------------------------------------------------
+## 浏览器缓存机制
 
 参考文献： a、https://juejin.cn/post/6844903497473720333
 
 b、https://segmentfault.com/a/1190000008377508?utm_source=sf-related
+
 

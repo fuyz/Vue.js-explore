@@ -31,11 +31,11 @@
                 retArr.push({
                     on: false,
                     length: 1
-                });
+                })
             }
         })
         console.warn(retArr)
-
+        console.log('----------------')
         // 扩展应用
         '1 2 3'.replace(/\d/g, function (match, i, str) {
             console.log([match, i, str])
@@ -45,6 +45,17 @@
         // parseInt(2, 2)  ---NaN
         // parseInt(3, 4)  ---3
         console.log(ret)
+        console.log('----------------')
+        let str2 = '2313sdfdfd[微信]防盗门时康复科【】[qq]339附加费的看法'
+        console.warn(str2)
+        let strNew = str2.replace(/\[.*?\]/g, function (match, i, str) {
+            if (match.indexOf('微信') != -1) {
+                return '<img src="weixin"/>'
+            } else if (match.indexOf('qq') != -1) {
+                return '<img src="qq"/>'
+            }
+        })
+        console.warn(strNew)
     </script>
 </body>
 
