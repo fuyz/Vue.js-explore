@@ -1,30 +1,30 @@
 ; (function (global) {
     // 构造函数写法
-    // function ModifyDivBg(Ele) {
+    // function ModifyDiv(Ele) {
     //     this.element = typeof Ele === 'string' ? document.querySelector(Ele) : Ele
     // }
-    // ModifyDivBg.prototype.setBgColor = function (color) {
-    //     this.element.style.backgroundColor = color
+    // ModifyDivBg.prototype.setFontSize = function (fontSize) {
+    //     this.element.style.fontSize = fontSize
     // }
 
     // class 类写法
-    class ModifyDivBg {
+    class ModifyDiv {
         constructor(Ele) {
             this.element = typeof Ele === 'string' ? document.querySelector(Ele) : Ele
         }
-        setBgColor(color) {
-            this.element.style.backgroundColor = color
+        setFontSize(fontSize) {
+            this.element.style.fontSize = fontSize
         }
     }
     if (typeof module !== 'undefined' && module.exports) {// CMD
-        module.exports = ModifyDivBg
+        module.exports = ModifyDiv
     } else if (typeof define === 'function' && define.amd) {// AMD
         define(function (require, factory) {
             'use strict';
-            return ModifyDivBg
+            return ModifyDiv
         })
     } else {
-        global.ModifyDivBg = ModifyDivBg
+        global.ModifyDiv = ModifyDiv
     }
 
 })(this)
