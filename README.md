@@ -1,5 +1,5 @@
 # Vue.js-explore：vue探索简介
-#### ip地址查询： https://github.com.ipaddress.com/
+#### github.com ip地址查询： https://github.com.ipaddress.com/
 #### typescript
 typescript教程：https://www.runoob.com/typescript/ts-install.html
 参考文献：https://www.tslang.cn/docs/home.html
