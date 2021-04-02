@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>XHR2实现跨域请求</h4>
+    <p>
+        第三种方法 XMLHttpRequest Level 2：HTML5提供的XMLHttpRequest Level 2已经实现了跨域访问以及其他的一些新功能
+    </p>
+    <p>
+        这需要在远程服务器端添加如下代码
+    </p>
+    <pre>
+        header('Access-Control-Allow-Origin:*'); //*代表可访问的地址，可以设置指定域名
+        header('Access-Control-Allow-Methods:POST,GET');
+        </pre>
+    <p>
+        这样在客户端使用常规的AJAX代码即可。
+    </p>
+    <script>
+        // function getData(res) {
+        //     debugger
+        // }
+        var wyUrl = 'http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html';
+        // var url = 'http://localhost:9999?myUrl=' + wyUrl + '&randomNum=3&callback=getData';
+        let xhr = new XMLHttpRequest()
+        xhr.open('post', wyUrl)
+        xhr.send({
+            name: 'fyz'
+        })
+        xhr.onreadystatechange = function () {
+            console.group(xhr)
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log([xhr.response, xhr.responseText, xhr.responseType, xhr.responseXML])
+                debugger
+            }
+        }
+    </script>
+</body>
+
+</html>

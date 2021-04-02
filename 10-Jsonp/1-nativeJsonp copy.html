@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>jsonp请求</h4>
+    <script>
+        function getData(res) {
+            console.log(['请求成功', JSON.parse(res)])
+        }
+    </script>
+    <script
+        src="http://localhost:9999?myUrl=http://c.m.163.com/nc/article/headline/T1348647853363/0-20.html&callback=getData&randomNum=123">
+    </script>
+
+    <!-- 动态添加sript -->
+    <script>
+        function getData() {
+            //jsonp ：通过创建动态script元素访问服务器，把回调函数名作为查询参数传递给服务器；
+            //服务器请求到数据以后把数据放入到回调函数中返回
+            var script = document.createElement('script');
+            var wyUrl = 'http://c.m.163.com/nc/article/headline/T1348647853363/0-20.html';
+            script.src = 'http://localhost:9999?myUrl=' + wyUrl + '&callback=callBackFun1';
+            document.documentElement.appendChild(script);
+        }
+
+        function callBackFun1(data) {
+            console.log(JSON.parse(data));
+        }
+
+        getData()
+    </script>
+</body>
+
+</html>

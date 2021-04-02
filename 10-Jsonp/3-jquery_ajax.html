@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>jquery实现跨域请求</h4>
+
+    <script src="./jquery.3.1.1.js"></script>
+    <script>
+        function getData() {
+            var wyUrl = 'http://c.m.163.com/nc/article/headline/T1348647853363/0-10.html';
+            var url = 'http://localhost:9999?myUrl=' + wyUrl + '&randomNum=3';
+            //ajax请求不用写回调函数，内部自动创建回调函数，名字随机，每次不一样
+            $.ajax({
+                url: url,
+                type: 'get', //不写时，默认为get方法
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log(JSON.parse(data));
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            })
+        }
+        getData()
+    </script>
+</body>
+
+</html>
