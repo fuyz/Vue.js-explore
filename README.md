@@ -60,7 +60,9 @@ https://github.com/fuyz/Vue.js-explore/tree/master/7-js%E9%93%BE%E5%BC%8F%E6%93%
 
 参考文献： https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace
 
+## 9、自定义js插件兼容AMD和CMD语法规范
 
+参考文献：https://blog.csdn.net/github_37360787/article/details/115339364?spm=1001.2014.3001.5501
 
 ------------------------------------------------------------------------------------
 ## 浏览器缓存机制
