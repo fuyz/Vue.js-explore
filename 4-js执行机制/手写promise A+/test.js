@@ -42,26 +42,57 @@ p.then(res => {
 //     console.log(5)
 //     console.log('链式返回reject3:', res)
 // })
-p.then(res => {
-    console.log(1)
-    throw new Error('错误1')
-}, err => {
-    console.log(err)
-    throw new Error('错误1')
-}).then(res => {
-    console.log(11)
-    console.log('链式返回reject2:', res)
-    // throw new Error('错误信息')
-}, err => {
-    console.log(err)
-    throw new Error('错误2')
-}).then(res => {
-    console.log(111)
-    console.log('链式返回reject3:', res)
-}, err => {
-    console.log(err)
-    throw new Error('错误3')
-})
+
+
+// p.then(res => {
+//     console.log(1)
+//     throw new Error('错误1')
+// }, err => {
+//     console.log('err1', err)
+//     // throw new Error('错误1')
+// }).then(res => {
+//     console.log(2)
+//     console.log('链式返回reject2:', res)
+//     // throw new Error('错误信息')
+// }, err => {
+//     console.log('err2', err)
+//     return 'err2'
+//     // throw new Error('错误2')
+// }).then(res => {
+//     console.log(3)
+//     console.log('链式返回reject3:', res)
+// }, err => {
+//     console.log('err3', err)
+//     // throw new Error('错误3')
+// })
+
+
+// MyPromise.resolve().then(() => {
+//     console.log(0);
+//     // return 3123
+//     return MyPromise.resolve(MyPromise.resolve(2));
+//     // return new MyPromise(resolve => {
+//     //     resolve(44)
+//     // });
+// }).then((res) => {
+//     console.log(res)
+// })
+
+// MyPromise.reject(new Error('错误信息')).then(() => {
+//     console.log(0);
+// }, err => {
+//     console.log(err)
+//     // return MyPromise.resolve(MyPromise.resolve(2));
+//     // return MyPromise.reject(new Error('错误信息2'));
+//     return MyPromise.reject(new Error('错误 '))
+//     // return new MyPromise(resolve => {
+//     //     resolve(44)
+//     // });
+// }).then((res) => {
+//     console.log(res)
+// }, err => {
+//     console.log('err2', err)
+// })
 
 
 // .catch(err => {
@@ -88,13 +119,13 @@ p.then(res => {
 //     console.log(value)
 // })
 
-// p.then(value => {
-//     console.log(2)
-//     console.log('resolve', value)
-// }, reason => {
-//     console.log(3)
-//     console.log(reason)
-// })
+/* p.then(value => {
+    console.log(2)
+    console.log('resolve', value)
+}, reason => {
+    console.log(3)
+    console.log(reason)
+}) */
 
 // let p2 = p.then(res => {
 //     console.log(1)

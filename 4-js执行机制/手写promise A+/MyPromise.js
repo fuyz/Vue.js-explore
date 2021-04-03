@@ -59,56 +59,66 @@ class MyPromise {
         // onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
 
         let p2 = new MyPromise((resolve, reject) => {
-            if (this.status === FULFILLED) {
+
+            let fulfilledMicrotask = () => {
                 queueMicrotask(() => {
                     try {
-                        let x = onFulfilled(this.value)
+                        // 获取成功回调函数的执行结果
+                        const x = onFulfilled(this.value);
+                        // 传入 resolvePromise 集中处理
+                        resolvePromise(p2, x, resolve, reject);
+                    } catch (error) {
+                        reject(error)
+                    }
+                })
+            }
+
+            let rejectedMicrotask = () => {
+                queueMicrotask(() => {
+                    try {
+                        let x = onRejected(this.reason)
                         resolvePromise(p2, x, resolve, reject)
-                        // resolve(onFulfilled(this.value))
                     } catch (err) {
                         reject(err)
                     }
                 })
+            }
 
+            if (this.status === FULFILLED) {
+                fulfilledMicrotask()
             } else if (this.status === REJECTED) {
-                onRejected && onRejected(this.reason)
-                // queueMicrotask(() => {
-                //     try {
-                // let x = onRejected(this.reason)
-                // resolvePromise(p2, x, resolve, reject)
-                // reject(onRejected(this.reason))
-                // } catch (err) {
-                //     reject(err)
-                // }
-                // })
+                rejectedMicrotask()
             } else if (this.status === PENDING) {
                 // this.onFulfilledCallback = onFulfilled
-                this.onFulfilledCallbacks.push(onFulfilled)
-                // this.onFulfilledCallbacks.push(() => {
-                //     queueMicrotask(() => {
-                //         try {
-                //             let x = onFulfilled(this.value)
-                //             resolvePromise(p2, x, resolve, reject)
-                //         } catch (err) {
-                //             reject(err)
-                //         }
-                //     })
-                // })
+                // this.onFulfilledCallbacks.push(onFulfilled)
+                this.onFulfilledCallbacks.push(() => {
+                    fulfilledMicrotask()
+                })
                 // this.onRejectedCallback = onRejected
-                this.onRejectedCallbacks.push(onRejected)
-                // this.onRejectedCallbacks.push(() => {
-                //     queueMicrotask(() => {
-                //         try {
-                //             let x = onRejected(this.reason)
-                //             resolvePromise(p2, x, resolve, reject)
-                //         } catch (err) {
-                //             reject(err)
-                //         }
-                //     })
-                // })
+                // this.onRejectedCallbacks.push(onRejected)
+                this.onRejectedCallbacks.push(() => {
+                    rejectedMicrotask()
+                })
             }
         })
         return p2
+    }
+
+    static resolve(p) {
+        if (p instanceof MyPromise) {
+            return p
+        }
+        return new MyPromise(resolve => {
+            resolve(p)
+        })
+    }
+    static reject(p) {
+        // if (p instanceof Error) {
+        //     return MyPromise.reject(p)
+        // }
+        return new MyPromise((resolve, reject) => {
+            reject(p)
+        })
     }
 
     catch(onRejected) {
@@ -118,7 +128,7 @@ class MyPromise {
 }
 
 function resolvePromise(p2, x, resolve, reject) {
-    debugger
+    // debugger
     if (x === p2) {
         return reject(new Error('Chaining cycle detected for promise #<Promise>'))
     }
