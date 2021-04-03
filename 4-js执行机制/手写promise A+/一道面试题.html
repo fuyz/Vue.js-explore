@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise 面试题</title>
+</head>
+
+<body>
+    <script>
+        // Promise.resolve().then(() => {
+        //     console.log(0);
+        //     return Promise.resolve(4);
+        // }).then((res) => {
+        //     console.log(res)
+        // })
+
+        // Promise.resolve().then(() => {
+        //     console.log(1);
+        // }).then(() => {
+        //     console.log(2);
+        // }).then(() => {
+        //     console.log(3);
+        // }).then(() => {
+        //     console.log(5);
+        // }).then(() => {
+        //     console.log(6);
+        // })
+
+        // 作者：ITEM
+        // 链接：https://juejin.cn/post/6945319439772434469
+        // 来源：掘金
+        // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+        let p1 = new Promise((resolve, reject) => {
+            // resolve('success')
+            reject('err')
+            // setTimeout(() => {
+            //     resolve('2s 后返回成功')
+            // }, 2000)
+        })
+
+        // p1
+        //     .then()
+        //     .then()
+        //     .then()
+        //     .then(value => console.log(value))
+
+        p1.then(
+                res => {
+                    console.warn(res)
+                    throw new Error('错误1')
+                    return 2
+                    // Promise.reject(new Error('222'))
+                },
+                err => {
+                    console.warn(err)
+                    throw new Error('错误2')
+                })
+            .then(
+                res => {
+                    console.warn(res)
+                    // Promise.reject(new Error('222'))
+                },
+                err => {
+                    console.warn(err)
+                })
+
+        // .catch(err => {
+        //     console.warn(err)
+        //     // return 'return'
+        //     // return Promise.resolve('return resolve')
+        //     // Promise.resolve('return resolve')
+        //     // return Promise.reject(new Error('return reject'))
+        // }).then(res => {
+        //     console.warn(res)
+        //     // debugger
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+
+
+        // let p2 = p1.then(res => {
+        //     console.warn(1)
+        //     return p2
+        // }, )
+
+        // p1.then(res => {
+        //     console.warn(2)
+        // }).then(res => {
+        //     console.warn(res)
+        // }).catch(err => {
+        //     console.warn(err)
+        // })
+        // p2.then(value => {
+        //     console.log(2)
+        //     console.log('resolve', value)
+        // }, reason => {
+        //     console.log(3)
+        //     console.log(reason.message)
+        // })
+    </script>
+
+</body>
+
+</html>
