@@ -64,6 +64,12 @@ https://github.com/fuyz/Vue.js-explore/tree/master/7-js%E9%93%BE%E5%BC%8F%E6%93%
 
 参考文献：https://blog.csdn.net/github_37360787/article/details/115339364?spm=1001.2014.3001.5501
 
+## 10、跨域请求总结
+
+jsonp、代理、XHR2
+
+参考博客： https://blog.csdn.net/github_37360787/article/details/54834789
+
 ------------------------------------------------------------------------------------
 ## 浏览器缓存机制
 
