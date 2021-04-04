@@ -55,8 +55,8 @@ class MyPromise {
 
     then(onFulfilled, onRejected) {
         // 如果不传，就使用默认函数
-        // onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
-        // onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
+        onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
+        onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
 
         let p2 = new MyPromise((resolve, reject) => {
 
@@ -138,16 +138,41 @@ function resolvePromise(p2, x, resolve, reject) {
         resolve(x)
     }
 }
-function rejectPromise(p2, x, resolve, reject) {
-    if (x === p2) {
-        return reject(new Error('Chaining cycle detected for promise #<Promise>'))
-    }
-    if (x instanceof MyPromise) {
-        x.then(resolve, reject)
-    } else {
-        reject(x)
-    }
-}
+
+/* MyPromise.resolve().then(() => {
+    console.log(0);    
+    return MyPromise.resolve(4);          
+}).then((res) => {
+    console.log(res)
+})
+MyPromise.resolve().then(() => {
+    console.log(1);
+}).then(() => {
+    console.log(2);
+}).then(() => {
+    console.log(3);
+}).then(() => {
+    console.log(5);
+}).then(() => {
+    console.log(6);
+}) */
+
+// 测试then参数可选
+/* const promise = new MyPromise((resolve, reject) => {
+    resolve(100)
+})
+promise
+    .then()
+    .then()
+    .then()
+    .then(value => console.log(value))
+ */
+
+
+// const promise = new MyPromise((resolve, reject) => {
+//     reject('err')
+// })
+// promise.then().then().then(value => console.log(value), reason => console.log('’err‘', reason))
 
 
 // let p = new MyPromise((resolve, reject) => {
