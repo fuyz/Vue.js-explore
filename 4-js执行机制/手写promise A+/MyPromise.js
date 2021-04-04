@@ -1,10 +1,8 @@
 
 // 新建 MyPromise 类
-
 const PENDING = 'pending'
 const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
-
 class MyPromise {
     constructor(executor) {
         // executor 是一个执行器，进入会立即执行
@@ -56,7 +54,8 @@ class MyPromise {
     then(onFulfilled, onRejected) {
         // 如果不传，就使用默认函数
         onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : value => value;
-        onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
+        // onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
+        onRejected = typeof onRejected === 'function' ? onRejected : '';
 
         let p2 = new MyPromise((resolve, reject) => {
 
@@ -76,8 +75,8 @@ class MyPromise {
             let rejectedMicrotask = () => {
                 queueMicrotask(() => {
                     try {
-                        let x = onRejected(this.reason)
-                        resolvePromise(p2, x, resolve, reject)
+                        let x = onRejected ? onRejected(this.reason) : this.reason
+                        resolvePromise(p2, x, resolve, reject, 'ignoreErr')
                     } catch (err) {
                         reject(err)
                     }
@@ -104,6 +103,31 @@ class MyPromise {
         return p2
     }
 
+    catch(onRejected) {
+        onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason };
+
+        let p2 = new MyPromise((resolve, reject) => {
+            let rejectedMicrotask = () => {
+                queueMicrotask(() => {
+                    try {
+                        let x = onRejected(this.reason)
+                        resolvePromise(p2, x, resolve, reject)
+                    } catch (err) {
+                        reject(err)
+                    }
+                })
+            }
+            if (this.status === REJECTED) {
+                rejectedMicrotask()
+            } else if (this.status === PENDING) {
+                this.onRejectedCallbacks.push(() => {
+                    rejectedMicrotask()
+                })
+            }
+        })
+        return p2
+    }
+
     static resolve(p) {
         if (p instanceof MyPromise) {
             return p
@@ -121,14 +145,15 @@ class MyPromise {
         })
     }
 
-    catch(onRejected) {
-        onRejected()
-    }
 
 }
 
-function resolvePromise(p2, x, resolve, reject) {
+function resolvePromise(p2, x, resolve, reject, key) {
     // debugger
+    if (key === 'ignoreErr') {
+        reject(x)
+        return
+    }
     if (x === p2) {
         return reject(new Error('Chaining cycle detected for promise #<Promise>'))
     }

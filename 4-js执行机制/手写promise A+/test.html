@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./55cd66beN68dbad8f.jpg" alt="" srcset="">
+    <div id="box"></div>
+
+
+</body>
+<script>
+    console.log('start')
+    // document.getElementById('box').innerHTML = ''
+    alert(1)
+
+    function test() {
+
+        for (let i = 0; i < 20000; i++) {
+            console.log('js逻辑')
+            // if (i >= 2999) {
+            //     console.warn('js逻辑即将完成')
+            // }
+        }
+        // document.getElementById('box').innerHTML = '<img src="./55cd66beN68dbad8f.jpg" alt="" srcset="">'
+    }
+    document.getElementById('box').innerHTML = '<p>fdjfsgjsjaskl</p>'
+
+    new Promise(resolve => {
+        resolve(1)
+    }).then(res => {
+        test()
+    })
+
+
+
+    // test()
+    setTimeout(() => {
+        console.warn('i am setTimeout 宏任务')
+        // test()
+        // alert(2)
+    }, 0);
+    console.log('end')
+</script>
+
+</html>
