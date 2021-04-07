@@ -17,10 +17,12 @@
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(num * num)
+                    // reject(new Error('123'))
+                    // reject('error')
+                    // throw '抛出错误'
                 }, 1000)
             })
         }
-
         // 原题：一秒后，依次（一次性）打印出1、4、9
         /* list.forEach(async (num) => {
             const res = await fn(num)
@@ -40,12 +42,20 @@
         // 2、箭头函数写法
         let outPut = async () => {
             for (let i = 0; i < list.length; i++) {
-                let res = await fn(list[i])
+                let res = ''
+                // 通过try catch捕获await 未返回resolve时，返回的错误，从而不阻止程序继续执行
+                try {
+                    res = await fn(list[i])
+                } catch (err) {
+                    // console.log(err)
+                    res = 'no response'
+                }
                 console.log(res)
-            }
-        }
 
-        //  错误写法： await is only valid in async functions and the top level bodies of modules
+            }
+            console.log('test 是否继续执行')
+        }
+        //  错误❌写法： await is only valid in async functions and the top level bodies of modules
         /* async function outPut() {
             list.map(num => {
                 const res = await fn(num)
@@ -54,6 +64,13 @@
         } */
 
         outPut()
+
+        // 捕获错误
+        // fn(8).then(res => {
+        //     console.warn(res)
+        // }).catch(err => {
+        //     console.warn(err)
+        // })
     </script>
 </body>
 
