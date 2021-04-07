@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>块格式化上下文</title>
+    <style>
+        /* .blue,
+        .red-inner {
+            height: 50px;
+            margin: 10px 0;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .red-outer {
+            overflow: hidden;
+            background: red;
+        } */
+
+        .blue {
+            height: 50px;
+            margin: 10px 0;
+            background: blue;
+        }
+
+        .red-inner {
+            margin: 100px 0;
+            height: 50px;
+        }
+
+        .red-outer {
+            /* 外边距塌陷 */
+            /* 创建新的 BFC 避免两个相邻 <div> 之间的 外边距合并 问题 */
+            /* overflow: hidden; */
+            /* overflow: auto; */
+            /* position: fixed; */
+            /* display: flex; */
+            /* float: left; */
+            /* display: inline-block; */
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blue"></div>
+    <div class="red-outer">
+        <div class="red-inner">red inner 设置 height: 50</div>
+    </div>
+    <p>创建BFC，防止外边距塌陷；创建BFC，防止外边距塌陷；创建BFC，防止外边距塌陷；创建BFC，防止外边距塌陷</p>
+</body>
+
+</html>
