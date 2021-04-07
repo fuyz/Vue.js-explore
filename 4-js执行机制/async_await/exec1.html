@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现一秒打印一次结果</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        let list = [1, 2, 3]
+
+        function fn(num) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(num * num)
+                }, 1000)
+            })
+        }
+
+        // 原题：一秒后，依次（一次性）打印出1、4、9
+        /* list.forEach(async (num) => {
+            const res = await fn(num)
+            console.log(res)
+        }) */
+
+        // 要求： 实现一秒打印一次结果
+
+        // 正确✅示范        
+        // 1、普通函数写法
+        /* async function outPut() { 
+            for (let i = 0; i < list.length; i++) {
+                let res = await fn(list[i])
+                console.log(res)
+            }
+        } */
+        // 2、箭头函数写法
+        let outPut = async () => {
+            for (let i = 0; i < list.length; i++) {
+                let res = await fn(list[i])
+                console.log(res)
+            }
+        }
+
+        //  错误写法： await is only valid in async functions and the top level bodies of modules
+        /* async function outPut() {
+            list.map(num => {
+                const res = await fn(num)
+                console.log(res)
+            })
+        } */
+
+        outPut()
+    </script>
+</body>
+
+</html>
