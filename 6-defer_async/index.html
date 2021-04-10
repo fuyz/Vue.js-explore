@@ -8,6 +8,65 @@
     <title>Document</title>
 </head>
 
+<script>
+    console.log('i am in html: start')
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('DOMContentLoaded1: 不需要等待图片，音频，视频等其他资源加载完成')
+    }, false);
+
+    window.onload = function () {
+        console.log('onload : 网页上所有资源（图片，音频，视频等）被加载后才会触发load事件')
+        // document.readyState为 complete了， 无效监听
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('onload 之后 DOMContentLoaded')
+        }, false);
+    }
+
+    // 可监听document.readyState的状态变化
+    console.warn(document.readyState)
+    document.addEventListener('readystatechange', (event) => {
+        console.warn(`readystate: ${document.readyState}`)
+    });
+</script>
+<!-- 
+    asnyc特点：
+    1、延迟加载；
+    2、不确定顺序执行
+    3、在DOMContentLoaded触发之前，主线程同步脚本执行完之后执行 
+
+    defer特点：
+    1、延迟加载；
+    2、有序执行
+    3、在DOMContentLoaded触发之前，主线程同步脚本执行完之后执行 
+
+    扩展：
+    * DOMContentLoaded的触发：实际是document.readyState为complete之前，也就是document.readyState为loading状态下才绑定才能监听得到该方法
+        if (document.readyState === 'loading') {  // 此时加载尚未完成，DOMContentLoaded事件监听才有效
+            document.addEventListener('DOMContentLoaded', doSomething);
+        } else {  // 此时`DOMContentLoaded` 已经被触发
+            ....
+        }
+    * window.onload: 网页上所有资源（图片，音频，视频等）被加载后才会触发load事件
+
+-->
+<script src="./defer1.js" defer></script>
+<script src="./defer2.js" defer></script>
+
+<script src="./async1.js" defer></script>
+<script src="./async2.js" defer></script>
+
+<img width="400px"
+    src="https://user-images.githubusercontent.com/21302802/114269848-b24beb80-9a3b-11eb-9616-ab64805313b7.png" alt="">
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201410%2F20%2F20141020162058_UrMNe.jpeg&refer=http%3A%2F%2Fcdn.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620650389&t=e902e1ef8a5fc76be180934570f3a493"
+    alt="">
+
+<script>
+    for (let i = 0; i < 1000; i++) {
+        console.log(1)
+    }
+    console.log('i am in html: end')
+</script>
+
 <body>
 
 </body>
