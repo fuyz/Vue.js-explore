@@ -30,11 +30,6 @@ demo: https://github.com/fuyz/Vue.js-explore/tree/master/2-vue-soundCode/directi
 ### 宏任务和微任务
 参考文章：https://blog.csdn.net/github_37360787/article/details/86610431
 
-DOMContentLoaded事件:https://developer.mozilla.org/zh-CN/docs/Web/API/Window/DOMContentLoaded_event
-
-当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完全加载;
-
-Note:同步 JavaScript 会暂停 DOM 的解析。同步js文件会延迟其加载，异步的defer脚本也会，async脚本不会
 
 ### web worker： 
 
@@ -52,6 +47,38 @@ Worker 接口是 Web Workers API 的一部分，指的是一种可由脚本创�
 
 https://github.com/fuyz/Vue.js-explore/tree/master/6-defer_async
 
+DOMContentLoaded事件:https://developer.mozilla.org/zh-CN/docs/Web/API/Window/DOMContentLoaded_event
+
+> 总结
+   
+  ``` 
+  asnyc特点：
+    1、延迟加载；
+    2、不确定顺序执行
+    3、在DOMContentLoaded触发之前，主线程同步脚本执行完之后执行 
+
+  defer特点：
+    1、延迟加载；
+    2、有序执行
+    3、在DOMContentLoaded触发之前，主线程同步脚本执行完之后执行 
+
+  扩展：
+  * DOMContentLoaded的触发：实际是document.readyState为complete之前，
+    也就是说document.readyState为loading状态下才绑定才能监听得到该方法
+  
+      if (document.readyState === 'loading') {  // 此时加载尚未完成，DOMContentLoaded事件监听才有效
+          document.addEventListener('DOMContentLoaded', doSomething);
+      } else {  // 此时`DOMContentLoaded` 已经被触发
+          ....
+      }
+   
+   * 当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完全加载;
+
+   * Note:同步 JavaScript 会暂停 DOM 的解析。同步js文件会延迟其加载
+
+   * window.onload: 网页上所有资源（图片，音频，视频等）被加载后才会触发load事件
+    
+```
 ## 7、js链式操作
 
 https://github.com/fuyz/Vue.js-explore/tree/master/7-js%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C
