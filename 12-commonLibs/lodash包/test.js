@@ -1,4 +1,6 @@
 let lodash = require("lodash")
+let _ = require("lodash/core")
 console.log(lodash.isArray([]))
 console.log(lodash.isObject(123))
-console.warn(lodash)
+// console.warn(lodash)
+console.warn(_)

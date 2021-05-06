@@ -97,6 +97,37 @@ jsonp、代理、XHR2
 
 参考博客： https://blog.csdn.net/github_37360787/article/details/54834789
 
+## 11、HTML、css知识点归纳总结
+
+- BFC(块格式化上下文)
+
+## 12、公共方法/lodash包
+
+#### lodash包地址：https://www.npmjs.com/package/lodash
+
+```
+// Load the full build.
+var _ = require('lodash');
+// Load the core build.
+var _ = require('lodash/core');
+// Load the FP build for immutable auto-curried iteratee-first data-last methods.
+var fp = require('lodash/fp');
+
+// Load method categories.
+var array = require('lodash/array');
+var object = require('lodash/fp/object');
+
+// Cherry-pick methods for smaller browserify/rollup/webpack bundles.
+var at = require('lodash/at');
+var curryN = require('lodash/fp/curryN');
+```
+
+```
+eg:
+- debounce/throttle (防抖节流)
+- isArray、isObject、isNull
+```
+
 ------------------------------------------------------------------------------------
 ## 浏览器缓存机制
 
