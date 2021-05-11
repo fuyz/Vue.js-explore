@@ -1,8 +1,9 @@
-# Vue.js-explore：vue探索简介
-#### github.com ip地址查询： https://github.com.ipaddress.com/
-#### typescript
-typescript教程：https://www.runoob.com/typescript/ts-install.html
-参考文献：https://www.tslang.cn/docs/home.html
+# 前端面试过程中的一些知识点总结：
+
+`（以下序号对应文件夹排序）` 
+
+前端面试复习导图![image](https://user-images.githubusercontent.com/21302802/117795963-397dc080-b281-11eb-9fe2-aeab6d64519a.png)
+
 
 ## 1、vue练习
 
@@ -129,10 +130,17 @@ eg:
 ```
 
 ------------------------------------------------------------------------------------
-## 浏览器缓存机制
+## 拓展
 
-参考文献： a、https://juejin.cn/post/6844903497473720333
+### 浏览器缓存机制
+参考文献：
+   - https://juejin.cn/post/6844903497473720333
+   - https://segmentfault.com/a/1190000008377508?utm_source=sf-related  
+      
+### typescript
+   - typescript教程：https://www.runoob.com/typescript/ts-install.html   
+   - 参考文献：https://www.tslang.cn/docs/home.html
 
-b、https://segmentfault.com/a/1190000008377508?utm_source=sf-related
-
+### ip地址查询：（github.com）
+   - https://github.com.ipaddress.com/
 
