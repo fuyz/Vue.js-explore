@@ -139,7 +139,9 @@ eg:
       
 ### typescript
    - typescript教程：https://www.runoob.com/typescript/ts-install.html   
-   - 参考文献：https://www.tslang.cn/docs/home.html
+   - 参考文献：
+      - https://www.tslang.cn/docs/home.html
+      - https://www.typescriptlang.org/
 
 ### ip地址查询：（github.com）
    - https://github.com.ipaddress.com/
