@@ -13,6 +13,18 @@ vue中文文档：https://cn.vuejs.org/v2/guide/
 
 Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven/
 
+
+## Vue2 知识经典
+<details >
+  <summary><b>自定义事件</b></summary>
+   <p>利用props可以实现父子通信，通过自定义事件我们可以实现子父通信，在子组件中通过$emit()派发事件并传递参数，在父级组件通过监听事件</p>
+  <ul>
+   <li>
+      <img src="https://user-images.githubusercontent.com/21302802/128300133-47006d3c-3483-4e89-9756-21e550760b38.png" alt="Vue2 VS Vue3" style="max-width:100%;" />      
+     </li>
+  </ul>
+</details>
+
 相关参考文献：
 Object.defineProperty：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 相关博客：https://blog.csdn.net/github_37360787/article/details/114362025
