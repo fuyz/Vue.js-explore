@@ -33,7 +33,6 @@ Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven
      </li>
   </ul>
 </details>
-![Uploading image.png…]()
 
 
 相关参考文献：
