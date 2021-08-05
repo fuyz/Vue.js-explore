@@ -24,6 +24,16 @@ Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven
      </li>
   </ul>
 </details>
+<details >
+  <summary><b>依赖注入：Provide和Inject</b></summary>
+   <p>作用是更方便的实现跨层级传参；用法是在祖辈上Provide，在后代上Inject</p>
+  <ul>
+   <li>
+      <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c138033fcf644110a27e5b61ae9b62a6~tplv-k3u1fbpfcp-no-mark:1280:960:0:0.awebp" alt="Vue2 VS Vue3" style="max-width:100%;" />      
+     </li>
+  </ul>
+</details>
+![Uploading image.png…]()
 
 
 相关参考文献：
