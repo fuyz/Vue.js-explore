@@ -25,20 +25,22 @@ Vue.js 技术揭秘： https://ustbhuangyi.github.io/vue-analysis/v2/data-driven
   </ul>
 </details>
 
+
 相关参考文献：
 Object.defineProperty：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+
 相关博客：https://blog.csdn.net/github_37360787/article/details/114362025
 
-### a、自定义指令
+### a.自定义指令
 
 demo: https://github.com/fuyz/Vue.js-explore/tree/master/2-vue-soundCode/directive
 
 官网文档： https://cn.vuejs.org/v2/guide/custom-directive.html
 
-### a、定义过滤器
+### b、定义过滤器
 官网文档：https://cn.vuejs.org/v2/guide/filters.html
 
-## 4、js执行机制
+## 4.js执行机制
 
 ### 宏任务和微任务
 参考文章：https://blog.csdn.net/github_37360787/article/details/86610431
